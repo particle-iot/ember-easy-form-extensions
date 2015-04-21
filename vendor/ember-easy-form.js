@@ -201,7 +201,7 @@ Ember.Handlebars.registerHelper('input-field', function(property, options) {
     }
   };
 
-  options.hash.valueBinding = modelPropertyPath(property);
+  options.hash.value = modelPropertyPath(property);
 
   var context = this,
     propertyType = function(property) {
@@ -229,13 +229,13 @@ Ember.Handlebars.registerHelper('input-field', function(property, options) {
   if (options.hash.as === 'text') {
     return EasyFormShims.viewHelper(context, Ember.EasyForm.TextArea, options);
   } else if (options.hash.as === 'select') {
-    delete(options.hash.valueBinding);
+    delete(options.hash.value);
 
     options.hash.contentBinding   = modelPropertyPath(options.hash.collection);
     options.hash.selectionBinding = modelPropertyPath(options.hash.selection);
-    options.hash.valueBinding     = modelPropertyPath(options.hash.value);
+    options.hash.value            = modelPropertyPath(options.hash.value);
 
-    if (Ember.isNone(options.hash.selectionBinding) && Ember.isNone(options.hash.valueBinding)) {
+    if (Ember.isNone(options.hash.selectionBinding) && Ember.isNone(options.hash.value)) {
       options.hash.selectionBinding = modelPropertyPath(property);
     }
 
