@@ -107,7 +107,7 @@ Ember.EasyForm.Config = Ember.Namespace.create({
 
 
 (function() {
-Ember.Handlebars.registerHelper('error-field', function(property, options) {
+Ember.Handlebars.registerBoundHelper('error-field', function(property, options) {
   options = Ember.EasyForm.processOptions(property, options);
 
   if (options.hash.propertyBinding) {
@@ -122,7 +122,7 @@ Ember.Handlebars.registerHelper('error-field', function(property, options) {
 
 
 (function() {
-Ember.Handlebars.registerHelper('form-for', function(object, options) {
+Ember.Handlebars.registerBoundHelper('form-for', function(object, options) {
   options.data.keywords.formForModelPath = object;
   return EasyFormShims.viewHelper(this, Ember.EasyForm.Form, options);
 });
@@ -132,7 +132,7 @@ Ember.Handlebars.registerHelper('form-for', function(object, options) {
 
 
 (function() {
-Ember.Handlebars.registerHelper('hint-field', function(property, options) {
+Ember.Handlebars.registerBoundHelper('hint-field', function(property, options) {
   options = Ember.EasyForm.processOptions(property, options);
 
   if (options.hash.text || options.hash.textBinding) {
@@ -147,7 +147,7 @@ Ember.Handlebars.registerHelper('hint-field', function(property, options) {
 (function() {
 Ember.Handlebars.helpers['ember-input'] = Ember.Handlebars.helpers['input'];
 
-Ember.Handlebars.registerHelper('ef-input', function(property, options) {
+Ember.Handlebars.registerBoundHelper('ef-input', function(property, options) {
   if (arguments.length === 1) {
     options = property;
 
@@ -167,7 +167,7 @@ Ember.Handlebars.registerHelper('ef-input', function(property, options) {
 var get = Ember.get,
     set = Ember.set;
 
-Ember.Handlebars.registerHelper('input-field', function(property, options) {
+Ember.Handlebars.registerBoundHelper('input-field', function(property, options) {
   options = Ember.EasyForm.processOptions(property, options);
 
   if (options.hash.propertyBinding) {
@@ -201,7 +201,7 @@ Ember.Handlebars.registerHelper('input-field', function(property, options) {
     }
   };
 
-  options.hash.valueBinding = modelPropertyPath(property);
+  options.hash.value = modelPropertyPath(property);
 
   var context = this,
     propertyType = function(property) {
@@ -229,13 +229,13 @@ Ember.Handlebars.registerHelper('input-field', function(property, options) {
   if (options.hash.as === 'text') {
     return EasyFormShims.viewHelper(context, Ember.EasyForm.TextArea, options);
   } else if (options.hash.as === 'select') {
-    delete(options.hash.valueBinding);
+    //delete(options.hash.value);
 
     options.hash.contentBinding   = modelPropertyPath(options.hash.collection);
     options.hash.selectionBinding = modelPropertyPath(options.hash.selection);
-    options.hash.valueBinding     = modelPropertyPath(options.hash.value);
+    options.hash.value            = modelPropertyPath(options.hash.value);
 
-    if (Ember.isNone(options.hash.selectionBinding) && Ember.isNone(options.hash.valueBinding)) {
+    if (Ember.isNone(options.hash.selectionBinding) && Ember.isNone(options.hash.value)) {
       options.hash.selectionBinding = modelPropertyPath(property);
     }
 
@@ -287,7 +287,7 @@ Ember.Handlebars.registerHelper('input-field', function(property, options) {
 
 
 (function() {
-Ember.Handlebars.registerHelper('label-field', function(property, options) {
+Ember.Handlebars.registerBoundHelper('label-field', function(property, options) {
   options = Ember.EasyForm.processOptions(property, options);
   options.hash.viewName = 'label-field-'+options.data.view.elementId;
   return EasyFormShims.viewHelper(this, Ember.EasyForm.Label, options);
@@ -298,7 +298,7 @@ Ember.Handlebars.registerHelper('label-field', function(property, options) {
 
 
 (function() {
-Ember.Handlebars.registerHelper('submit', function(value, options) {
+Ember.Handlebars.registerBoundHelper('submit', function(value, options) {
   if (typeof(value) === 'object') {
     options = value;
     value = undefined;
