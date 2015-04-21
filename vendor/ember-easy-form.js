@@ -147,7 +147,7 @@ Ember.Handlebars.registerHelper('hint-field', function(property, options) {
 (function() {
 Ember.Handlebars.helpers['ember-input'] = Ember.Handlebars.helpers['input'];
 
-Ember.Handlebars.registerHelper('input', function(property, options) {
+Ember.Handlebars.registerHelper('ef-input', function(property, options) {
   if (arguments.length === 1) {
     options = property;
 
