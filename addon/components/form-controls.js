@@ -1,16 +1,19 @@
 import Ember from 'ember';
+import softAssert from '../utils/observers/soft-assert';
+
+const { computed } = Ember;
 
 export default Ember.Component.extend({
   attributeBindings: ['legend'],
-  classNameBindings: ['className'],
   className: 'controls',
+  classNameBindings: ['className'],
   legend: null,
-  tagName: 'fieldset',
+  modelPath: 'model',
+  tagName: '',
+  checkForLegend: softAssert('legend'),
 
-  checkForLegend: function() {
-    Ember.assert(
-      'You must pass a legend (description) to the form-controls component like {{#form-controls legend=\'Write a new blog post\'}}',
-      this.get('legend')
-    );
-  }.on('didInsertElement')
+  isFormControls: computed(function() {
+    return true;
+  }).readOnly(),
+
 });
