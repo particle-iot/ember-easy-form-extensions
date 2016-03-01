@@ -100,7 +100,7 @@ export default Ember.Component.extend({
   type: computed('content', 'property', 'value', function() {
     const property = this.get('property');
 
-    let type;
+    let type = 'text';
 
     if (this.get('content')) {
       type = 'select';
