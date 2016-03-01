@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   classNameBindings: ['className'],
   legend: null,
   modelPath: 'model',
-  tagName: '',
+  tagName: 'fieldset',
   checkForLegend: softAssert('legend'),
 
   isFormControls: computed(function() {
