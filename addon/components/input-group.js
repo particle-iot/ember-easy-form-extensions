@@ -1,7 +1,6 @@
 import defaultFor from '../utils/default-for';
 import Ember from 'ember';
 import humanize from '../utils/humanize';
-import layout from '../templates/components/input-group';
 
 const { computed, observer, on, run, typeOf } = Ember;
 
@@ -37,7 +36,6 @@ export default Ember.Component.extend({
   isInvalid: computed.not('isValid'),
   isNewlyValid: false,
   isValid: true,
-  layout: layout,
   modelPath: computed.oneWay('formControls.modelPath'),
   registerAction: 'registerInputGroup',
   showError: false,

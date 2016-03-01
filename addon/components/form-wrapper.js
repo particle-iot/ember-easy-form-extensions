@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import FormSubmissionClassNameMixin from 'ember-easy-form-extensions/mixins/components/form-submission-class-name';
-import layout from '../templates/components/form-wrapper';
 
 const { computed, on } = Ember;
 
@@ -17,7 +16,6 @@ export default Ember.Component.extend(
   attributeBindings: ['novalidate'],
   classNameBindings: ['className'],
   formIsSubmitted: computed.oneWay('formController.formIsSubmitted'),
-  layout: layout,
   tagName: 'form',
 
   /* Properties */

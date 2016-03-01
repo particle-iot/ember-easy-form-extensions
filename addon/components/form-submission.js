@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import FormSubmissionClassNameMixin from 'ember-easy-form-extensions/mixins/components/form-submission-class-name';
-import layout from '../templates/components/form-submission';
 
 const { computed } = Ember;
 
@@ -27,7 +26,6 @@ export default Ember.Component.extend(
 
   classNameBindings: ['className'],
   formIsSubmitted: computed.oneWay('formController.formIsSubmitted'),
-  layout: layout,
 
   formController: computed(function() {
     const hasFormController = this.nearestWithProperty('formController');

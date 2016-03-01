@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import layout from '../templates/components/error-field';
 
 const { computed, observer, on } = Ember;
 
@@ -18,7 +17,6 @@ export default Ember.Component.extend({
   classNameBindings: ['className', 'showError'],
   errors: null,
   invalidAction: 'setGroupAsInvalid',
-  layout: layout,
   tagName: 'span',
   validAction: 'setGroupAsValid',
   showError: false,

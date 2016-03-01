@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import layout from '../templates/components/form-submission-button';
 
 const { computed } = Ember;
 
@@ -17,7 +16,6 @@ export default Ember.Component.extend({
 
   attributeBindings: ['dataTest:data-test', 'disabled', 'type'],
   classNameBindings: ['className'],
-  layout: layout,
   tagName: 'button',
 
   dataTest: computed('action', function() {
