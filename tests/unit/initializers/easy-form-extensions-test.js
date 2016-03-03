@@ -22,7 +22,7 @@ test('Input element basic accessibility', function(assert) {
   assert.ok(Ember.Checkbox.create().get('attributeBindings').toString().indexOf('aria-checked') > -1,
     'Ember.Checkbox should have an aria-checked binding');
 
-  ['TextArea', 'TextField', 'Select'].forEach(function(className) {
+  ['TextArea', 'TextField'].forEach(function(className) {
     const instance = Ember[className].create();
     const attributeBindings = instance.get('attributeBindings').toString();
 
