@@ -57,7 +57,7 @@ export default Ember.Component.extend({
 
     if (validationsForProperty && !this.get('bindingForErrors')) {
       const errorPath = `formController.errors.${property}`;
-      const binding = Ember.oneWay(this, 'errors', errorPath);
+      const binding = Ember.computed.oneWay(this, 'errors', errorPath);
 
       this.set('bindingForErrors', binding);
     }
