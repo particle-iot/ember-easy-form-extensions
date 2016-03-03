@@ -25,7 +25,7 @@ export function initialize(/* container, app */) {
     @ISSUE https://github.com/emberjs/ember.js/issues/5394
     */
 
-    _actions: {
+    actions: {
 
       /**
       Adds the `routeDidTransition` event to the route's controller. The event will trigger everytime the router has finished transitioning into the route - it triggers on the route that has been transitioned into, not the previous route. Thus, it can be used to reliably reset controller properties on 'page load'. For example:
