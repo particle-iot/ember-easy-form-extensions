@@ -60,15 +60,15 @@ export default Ember.Component.extend({
   }),
 
   inputPartial: computed('type', function() {
-    const { container, pathToInputPartials, type } = this.getProperties(
-      [ 'container', 'pathToInputPartials', 'type' ]
+    const { pathToInputPartials, type } = this.getProperties(
+      [ 'pathToInputPartials', 'type' ]
     );
 
     /* Remove leading and trailing slashes for consistency */
 
     const dir = pathToInputPartials.replace(/^\/|\/$/g, '');
 
-    if (!!container.lookup(`template:${dir}/${type}`)) {
+    if (!!Ember.getOwner(this).lookup(`template:${dir}/${type}`)) {
       return `${dir}/${type}`;
     } else {
       return `${dir}/default`;
