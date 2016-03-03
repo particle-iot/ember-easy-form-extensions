@@ -4,7 +4,7 @@ import EmberValidations from 'ember-validations';
 const { computed, on } = Ember;
 
 export default Ember.Mixin.create(
-  EmberValidations.Mixin, {
+  EmberValidations, {
 
   /* Properties */
 
