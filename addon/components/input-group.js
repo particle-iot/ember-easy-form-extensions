@@ -202,15 +202,14 @@ export default Ember.Component.extend({
 
   setBindingForValue: on('didInitAttrs', function() {
     Ember.assert('You must set a property attribute on the {{input-group}} component', this.get('property'));
-
-    const propertyWithModel = this.get('propertyWithModel');
-    const binding = Ember.bind(this, 'value', `formController.${propertyWithModel}`);
-
-    this.set('bindingForValue', binding);
   }),
 
   setFormControls: on('init', function() {
     this.set('formControls', this.nearestWithProperty('isFormControls'));
+    const propertyWithModel = this.get('propertyWithModel');
+    const binding = Ember.bind(this, 'value', `formController.${propertyWithModel}`);
+
+    this.set('bindingForValue', binding);
   }),
 
   /* Private methods */
