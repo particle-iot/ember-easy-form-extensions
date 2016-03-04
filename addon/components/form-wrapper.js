@@ -10,6 +10,7 @@ export default Ember.Component.extend(
 
   className: 'form',
   novalidate: true,
+  autoFocus: true,
 
   /* Properties */
 
@@ -43,10 +44,13 @@ export default Ember.Component.extend(
   mixin when routeable components land */
 
   autofocus: on('didInsertElement', function() {
-    var input = this.$().find('input').first();
-
-    if (!Ember.$(input).hasClass('datepicker')) {
-      input.focus();
+    if(this.get('autoFocus')) {
+      var input = this.$().find('input').first();
+      if (!Ember.$(input).hasClass('datepicker')) {
+        setTimeout(() => {
+          input.focus();
+        }, 100);
+      }
     }
   }),
 
