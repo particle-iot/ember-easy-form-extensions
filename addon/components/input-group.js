@@ -157,18 +157,24 @@ export default Ember.Component.extend({
 
   actions: {
 
-    showError() {
-      this.set('showError', true);
+  //Issue from here: https://github.com/sir-dunxalot/ember-easy-form-extensions/issues/41
+   showError: function showError() {
+      if (!this.get('isDestroying')) {
+        this.set('showError', true);
+      }
     },
 
-    setGroupAsInvalid() {
-      this.set('isValid', false);
+    setGroupAsInvalid: function setGroupAsInvalid() {
+      if (!this.get('isDestroying')) {
+        this.set('isValid', false);
+      }
     },
 
-    setGroupAsValid() {
-      this.set('isValid', true);
-    },
-
+    setGroupAsValid: function setGroupAsValid() {
+      if (!this.get('isDestroying')) {
+        this.set('isValid', true);
+      }
+    }
   },
 
   /* Public methods - avoid xBinding syntax */
