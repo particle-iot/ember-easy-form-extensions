@@ -26,16 +26,18 @@ export default Ember.Mixin.create({
   @method rollbackifDirty
   */
 
-  rollbackIfDirty: on('willTransition', function(model) {
-    model = defaultFor(model, this.get('controller.model'));
-
-    if (model.get('isDirty')) {
-      if (model.get('id')) {
-        model.rollback();
-      } else {
-        model.deleteRecord();
+  actions: {
+    willTransition() {
+      const model = this.get('controller.model');
+      if (model && model.get('hasDirtyAttributes')) {
+        if (model.get('id')) {
+          model.rollbackAttributes();
+        } else {
+          model.deleteRecord();
+        }
       }
+      return true;
     }
-  }),
+  },
 
 });
