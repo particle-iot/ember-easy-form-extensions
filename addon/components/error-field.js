@@ -42,8 +42,7 @@ export default Ember.Component.extend({
 
   notifyChangeInValidity: observer('canAndShouldShowError', function() {
     const actionProperty = this.get('canAndShouldShowError') ? 'invalidAction' : 'validAction';
-
-    this.sendAction(actionProperty);
+    Ember.run.once(this, 'sendAction', actionProperty);
   }),
 
   addBindingForErrors: on('didInitAttrs', function() {

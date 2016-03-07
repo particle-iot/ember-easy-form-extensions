@@ -8,6 +8,7 @@ export default Ember.Component.extend({
 
   /* Options */
 
+  classNames: ['input-wrapper'],
   className: 'input-wrapper',
   hint: null,
   pathToInputPartials: 'form-inputs',
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
 
   attributeBindings: ['dataTest:data-test'],
   bindingForValue: null, // Avoid xBinding naming convention
-  classNameBindings: ['className', 'validityClass'],
+  classNameBindings: ['validityClass'],
   formControls: null,
   isInvalid: computed.not('isValid'),
   isNewlyValid: false,
@@ -131,25 +132,18 @@ export default Ember.Component.extend({
     return type;
   }),
 
-  validityClass: computed('className', 'isNewlyValid', 'isValid',
+  validityClass: computed('isValid',
     function() {
       const className = this.get('className');
 
       let modifier;
 
-      if (this.get('isNewlyValid')) {
-        modifier = 'newly-valid';
-      } else if (this.get('isValid')) {
+      if (this.get('isValid')) {
         modifier = 'valid';
       } else {
         modifier = 'error';
       }
-
-      if (modifier) {
-        return `${className}-${modifier}`;
-      } else {
-        return className;
-      }
+      return `${className}-${modifier}`;
     }
   ),
 
