@@ -147,12 +147,17 @@ export default Ember.Component.extend({
     }
   ),
 
+  focusOut: function() {
+    this.send('showError');
+    return true;
+  },
+
   /* Actions */
 
   actions: {
 
-  //Issue from here: https://github.com/sir-dunxalot/ember-easy-form-extensions/issues/41
-   showError: function showError() {
+    //Issue from here: https://github.com/sir-dunxalot/ember-easy-form-extensions/issues/41
+    showError: function showError() {
       if (!this.get('isDestroying')) {
         this.set('showError', true);
       }
