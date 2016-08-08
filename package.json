@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "ember-cli-babel": "^5.0.0",
-    "ember-cli-htmlbars": "0.7.6",
+    "ember-cli-htmlbars": "^1.0.11",
     "ember-validations": "dockyard/ember-validations#master"
   },
   "ember-addon": {
