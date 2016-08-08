@@ -22,7 +22,7 @@ export function destroy(component) {
 
 export function initAttrs(component) {
   run(function() {
-    component.trigger('didInitAttrs');
+    component.trigger('init');
   });
 }
 

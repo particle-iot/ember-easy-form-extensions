@@ -45,7 +45,7 @@ export default Ember.Component.extend({
     Ember.run.once(this, 'sendAction', actionProperty);
   }),
 
-  addBindingForErrors: on('didInitAttrs', function() {
+  addBindingForErrors: on('init', function() {
     const property = this.get('property');
 
     Ember.assert('You must set a property attribute on the {{error-field}} component', property);
@@ -56,19 +56,10 @@ export default Ember.Component.extend({
 
     if (validationsForProperty && !this.get('bindingForErrors')) {
       const errorPath = `formController.errors.${property}`;
-      const binding = Ember.Binding.from(errorPath).to('errors').oneWay();
-      binding.connect(this);
+      const binding = Ember.computed.readOnly(errorPath);
 
+      this.set('errors', binding);
       this.set('bindingForErrors', binding);
     }
-  }),
-
-  removeBindingForErrors: on('willDestroyElement', function() {
-    const property = 'bindingForErrors';
-
-    if (this.get(property)) {
-      this.get(property).disconnect(this);
-      this.set(property, null);
-    }
-  }),
+  })
 });

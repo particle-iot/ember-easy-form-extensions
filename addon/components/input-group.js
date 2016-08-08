@@ -190,23 +190,15 @@ export default Ember.Component.extend({
     }, this.get('newlyValidDuration'));
   }),
 
-  removeBindingForValue: on('willDestroyElement', function() {
-    const property = 'bindingForValue';
-
-    if (this.get(property)) {
-      this.get(property).disconnect(this);
-      this.set(property, null);
-    }
-  }),
-
-  setBindingForValue: on('didInitAttrs', function() {
+  setBindingForValue: on('init', function() {
     Ember.assert('You must set a property attribute on the {{input-group}} component', this.get('property'));
   }),
 
   setFormControls: on('init', function() {
     this.set('formControls', this.nearestWithProperty('isFormControls'));
     const propertyWithModel = this.get('propertyWithModel');
-    const binding = Ember.bind(this, 'value', `formController.${propertyWithModel}`);
+    const binding = Ember.computed.alias(`formController.${propertyWithModel}`)
+    this.set('value', binding);
 
     this.set('bindingForValue', binding);
   }),
