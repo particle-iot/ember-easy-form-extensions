@@ -25,7 +25,8 @@ export default Ember.Component.extend(
   moving forward */
 
   formController: Ember.computed(function() {
-    const routeController = this.get('targetObject');
+    // TODO: targetObject is deprecated as of 2.13; this is a bandaid
+    const routeController = this.get('_targetObject');
 
     if (this.get('hasFormMixin')) {
       return this;
