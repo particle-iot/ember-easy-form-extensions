@@ -98,7 +98,7 @@ export default Ember.Component.extend({
     }
   }),
 
-  type: computed('content', 'property', 'value', function() {
+  type: computed('property', function() {
     const property = this.get('property');
 
     let type = 'text';
