@@ -44,7 +44,7 @@ export default Ember.Component.extend(
     },
 
     delete() {
-      this.sendAction('delete');
+      this.sendAction('deleteAction');
     },
 
     save() {
